@@ -1,0 +1,85 @@
+.sidebar {
+    padding: 1.2em;
+}
+
+.brand {
+    align-items: center;
+    justify-content: center;
+    padding: 0.8em;
+    padding-bottom: 0em;
+}
+
+.brand .brand-logo {
+    width: 3em;
+}
+
+.brand .brand-title {
+    display: inline-block;
+    font-size: 1.15em;
+    line-height: 0.9;
+    font-weight: 400;
+    margin-left: 0.52em;
+}
+
+.brand .brand-title span {
+    display: block;
+}
+
+.brand .brand-title small {
+    font-weight: 300;
+    font-size: 0.7em;
+}
+
+.nav {
+    margin-top: 3.6em;
+}
+
+.nav .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.6em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.nav .nav-item.active {
+    background-color: white;
+    box-shadow: rgba(170, 170, 170, 0.35) 1px 2px 2px;
+}
+
+.nav .nav-item .nav-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav .nav-item .nav-icon {
+    width: 2em;
+    height: 2em;
+    fill: #000;
+}
+
+.nav .nav-item .nav-icon.active {
+    display: none;
+}
+
+.nav .nav-item.active .nav-icon {
+    display: none;
+}
+
+.nav .nav-item.active .nav-icon.active {
+    display: inherit;
+    fill: #30B9BF;
+}
+
+.nav .nav-item .nav-text {
+    font-size: 1.15em;
+    line-height: 1.0;
+    margin-left: 0.5em;
+    width: 4em;
+}
+
+.nav .nav-item.active .nav-text {
+    color: #30B9BF;
+}

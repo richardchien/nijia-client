@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>web/images/logo.png</file>
+        <file>web/css/base.css</file>
+        <file>web/css/sidebar.css</file>
+        <file>web/sidebar.html</file>
+    </qresource>
+</RCC>
