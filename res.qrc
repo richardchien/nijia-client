@@ -4,5 +4,24 @@
         <file>web/css/base.css</file>
         <file>web/css/sidebar.css</file>
         <file>web/sidebar.html</file>
+        <file>web/css/device-list.css</file>
+        <file>web/css/my-account.css</file>
+        <file>web/css/scene-list.css</file>
+        <file>web/device-list.html</file>
+        <file>web/my-account.html</file>
+        <file>web/scene-list.html</file>
+        <file>web/js/base.js</file>
+        <file>web/css/data-mon-list.css</file>
+        <file>web/data-mon-list.html</file>
+        <file>web/images/devices/10000.jpg</file>
+        <file>web/images/devices/10001.jpg</file>
+        <file>web/images/devices/10002.jpg</file>
+        <file>web/images/devices/10003.jpg</file>
+        <file>web/images/devices/10004.jpg</file>
+        <file>web/images/devices/10005.jpg</file>
+        <file>web/images/devices/generic-bell.png</file>
+        <file>web/images/devices/generic-light.png</file>
+        <file>web/images/devices/generic-meter.png</file>
+        <file>web/images/devices/generic-radio.png</file>
     </qresource>
 </RCC>

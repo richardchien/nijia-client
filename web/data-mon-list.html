@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/data-mon-list.css">
+</head>
+
+<body>
+  <div class="container scrollbar">
+    <main class="main card-list data-mon-list" id="data-mon-list">
+      <div class="card data-mon">
+        <div>
+          <div class="data-mon-name card-title">室内温度</div>
+          <div class="data-mon-source card-subtitle">
+            来自 <span class="device-name">温湿度计</span>
+          </div>
+        </div>
+        <div class="data-mon-value">23.0 °C</div>
+      </div>
+      <div class="card data-mon">
+        <div>
+          <div class="data-mon-name card-title">气压</div>
+          <div class="data-mon-source card-subtitle">
+            来自 <span class="device-name">气压计</span>
+          </div>
+        </div>
+        <div class="data-mon-value">1010 hPa</div>
+      </div>
+      <div class="card data-mon">
+        <div>
+          <div class="data-mon-name card-title">PM2.5</div>
+          <div class="data-mon-source card-subtitle">
+            来自 <span class="device-name">PM2.5检测仪</span>
+          </div>
+        </div>
+        <div class="data-mon-value">26</div>
+      </div>
+      <div class="card data-mon">
+        <div>
+          <div class="data-mon-name card-title">湿度</div>
+          <div class="data-mon-source card-subtitle">
+            来自 <span class="device-name">温湿度计</span>
+          </div>
+        </div>
+        <div class="data-mon-value">60%</div>
+      </div>
+      <div class="card data-mon">
+        <div>
+          <div class="data-mon-name card-title">床头灯亮度</div>
+          <div class="data-mon-source card-subtitle">
+            来自 <span class="device-name">床头灯</span>
+          </div>
+        </div>
+        <div class="data-mon-value">33%</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script src="./js/base.js"></script>
+
+  <script>
+
+  </script>
+</body>
+
+</html>

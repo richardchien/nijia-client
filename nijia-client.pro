@@ -1,4 +1,4 @@
-QT       += core gui webenginewidgets
+QT       += core gui webenginewidgets webchannel
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    sidebarbridge.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    sidebarbridge.h
 
 FORMS +=
 
@@ -30,4 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    res.qrc
+
+QTQUICK_COMPILER_SKIPPED_RESOURCES += \
     res.qrc

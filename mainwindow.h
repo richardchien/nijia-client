@@ -1,5 +1,8 @@
 #pragma once
 
+#include "sidebarbridge.h"
+
+#include <QStackedWidget>
 #include <QWebEngineView>
 #include <QWidget>
 
@@ -11,6 +14,19 @@ public:
     ~MainWindow();
 
 private:
+    void initView();
+    void initLogic();
+    QWebEngineView *createWebEngineView();
+
+private:
     QWebEngineView *sidebarContainer;
-    QWebEngineView *mainContainer;
+    SidebarBridge *sidebarBridge;
+    QWebChannel *sidebarWebChannel;
+
+    QWebEngineView *dataMonitorContainer;
+    QWebEngineView *deviceListContainer;
+    QWebEngineView *sceneListContainer;
+    QWebEngineView *myAccountContainer;
+
+    QStackedWidget *mainWidget;
 };

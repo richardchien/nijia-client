@@ -1,0 +1,27 @@
+.device-image-switch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.device-image {
+    width: 3.13em;
+    height: 3.13em;
+}
+
+.device .switch {
+    margin-top: -0.4em;
+    margin-right: -0.4em;
+    visibility: hidden;
+}
+
+.device.switchable .switch {
+    visibility: visible;
+}
+
+.device-name {
+    margin-top: 0.58em;
+    font-weight: bolder;
+    font-size: 0.92em;
+    line-height: 1.0;
+}

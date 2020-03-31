@@ -1,0 +1,11 @@
+.greeting {
+    padding: 0 0.8em;
+    font-size: 0.85em;
+    line-height: 1.7;
+}
+
+.greeting-username {
+    display: block;
+    font-size: 1.6em;
+    font-weight: bolder;
+}

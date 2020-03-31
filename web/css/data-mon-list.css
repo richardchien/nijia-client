@@ -1,0 +1,13 @@
+.data-mon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.data-mon-value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2.3em;
+    line-height: 1.8;
+}
