@@ -1,3 +1,7 @@
+.device {
+    cursor: pointer;
+}
+
 .device-image-switch {
     display: flex;
     flex-direction: row;
@@ -12,11 +16,6 @@
 .device .switch {
     margin-top: -0.4em;
     margin-right: -0.4em;
-    visibility: hidden;
-}
-
-.device.switchable .switch {
-    visibility: visible;
 }
 
 .device-name {

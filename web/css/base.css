@@ -112,12 +112,12 @@ img {
     fill: #AAA;
 }
 
-.switch.on {
+.switch.switched-on {
     background-color: #D4F0F1;
     border-color: rgba(164, 224, 225, 0.9);
 }
 
-.switch.on .switch-icon {
+.switch.switched-on .switch-icon {
     fill: #32B9BF;
 }
 
@@ -125,7 +125,7 @@ img {
     background-color: #FBFBFB;
 }
 
-.switch.on:hover {
+.switch.switched-on:hover {
     background-color: #C2EFF1;
 }
 

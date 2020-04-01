@@ -3,4 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+}
+
+.scene:active, .scene.active {
+    background-color: #FBFBFB;
 }

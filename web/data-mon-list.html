@@ -11,61 +11,38 @@
 </head>
 
 <body>
-  <div class="container scrollbar">
+  <div class="container scrollbar" id="app">
     <main class="main card-list data-mon-list" id="data-mon-list">
-      <div class="card data-mon">
+      <div class="card data-mon" v-for="{ name, source, value } in dataMonList">
         <div>
-          <div class="data-mon-name card-title">室内温度</div>
+          <div class="data-mon-name card-title">{{ name }}</div>
           <div class="data-mon-source card-subtitle">
-            来自 <span class="device-name">温湿度计</span>
+            来自 <span class="device-name">{{ source }}</span>
           </div>
         </div>
-        <div class="data-mon-value">23.0 °C</div>
-      </div>
-      <div class="card data-mon">
-        <div>
-          <div class="data-mon-name card-title">气压</div>
-          <div class="data-mon-source card-subtitle">
-            来自 <span class="device-name">气压计</span>
-          </div>
-        </div>
-        <div class="data-mon-value">1010 hPa</div>
-      </div>
-      <div class="card data-mon">
-        <div>
-          <div class="data-mon-name card-title">PM2.5</div>
-          <div class="data-mon-source card-subtitle">
-            来自 <span class="device-name">PM2.5检测仪</span>
-          </div>
-        </div>
-        <div class="data-mon-value">26</div>
-      </div>
-      <div class="card data-mon">
-        <div>
-          <div class="data-mon-name card-title">湿度</div>
-          <div class="data-mon-source card-subtitle">
-            来自 <span class="device-name">温湿度计</span>
-          </div>
-        </div>
-        <div class="data-mon-value">60%</div>
-      </div>
-      <div class="card data-mon">
-        <div>
-          <div class="data-mon-name card-title">床头灯亮度</div>
-          <div class="data-mon-source card-subtitle">
-            来自 <span class="device-name">床头灯</span>
-          </div>
-        </div>
-        <div class="data-mon-value">33%</div>
+        <div class="data-mon-value">{{ value }}</div>
       </div>
     </main>
   </div>
 
   <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
   <script src="./js/base.js"></script>
+  <script src="./js/vue.js"></script>
 
   <script>
-
+    let app = new Vue({
+      el: '#app',
+      data: {
+        dataMonList: [
+          { name: '室内温度', source: '温湿度计', value: '23.0 °C' },
+          { name: '湿度', source: '温湿度计', value: '33%' },
+          { name: 'PM2.5', source: 'PM2.5检测仪', value: '26' },
+          { name: '床头灯亮度', source: '床头灯', value: '60%' },
+          { name: '吸顶灯开关', source: '吸顶灯', value: '开' },
+          { name: '气压', source: '气压计', value: '1024 hPa' },
+        ]
+      }
+    })
   </script>
 </body>
 

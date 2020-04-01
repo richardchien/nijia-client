@@ -23,5 +23,6 @@
         <file>web/images/devices/generic-light.png</file>
         <file>web/images/devices/generic-meter.png</file>
         <file>web/images/devices/generic-radio.png</file>
+        <file>web/js/vue.js</file>
     </qresource>
 </RCC>
