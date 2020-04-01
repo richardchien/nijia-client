@@ -23,7 +23,6 @@ body {
 a {
     text-decoration: none;
     color: #333;
-    transition: 0.1s all ease;
 }
 
 ul, ol {
@@ -105,7 +104,6 @@ img {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 0.1s all ease;
 }
 
 .switch-icon {

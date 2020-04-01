@@ -1,5 +1,5 @@
 .sidebar {
-    padding: 1.2em;
+    padding: 1.2em 0.8em 1.2em 1.4em;
 }
 
 .brand {
@@ -44,10 +44,6 @@
     border-radius: 8px;
     margin-bottom: 1em;
     cursor: pointer;
-}
-
-.nav-text, .nav-icon {
-    transition: 0.1s all ease;
 }
 
 .nav-btn:hover .nav-text, .nav-btn:hover .nav-icon {
