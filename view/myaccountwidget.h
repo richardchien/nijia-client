@@ -8,6 +8,4 @@ public:
     explicit MyAccountWidget(QWidget *parent = nullptr);
 
 signals:
-
-public slots:
 };

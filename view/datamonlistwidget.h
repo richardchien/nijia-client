@@ -8,6 +8,4 @@ public:
     explicit DataMonListWidget(QWidget *parent = nullptr);
 
 signals:
-
-public slots:
 };

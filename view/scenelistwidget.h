@@ -8,6 +8,4 @@ public:
     explicit SceneListWidget(QWidget *parent = nullptr);
 
 signals:
-
-public slots:
 };

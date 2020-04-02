@@ -7,9 +7,11 @@ class SidebarWidget : public WebViewWidget {
 public:
     explicit SidebarWidget(QWidget *parent = nullptr);
 
-signals:
-    void navItemClicked(int item);
+public: // intended to be used via QWebChannel
+    Q_INVOKABLE void emitNavItemClicked(int index) {
+        emit navItemClicked(index);
+    }
 
-public slots:
-    void onNavItemClicked(int item);
+signals:
+    void navItemClicked(int index);
 };

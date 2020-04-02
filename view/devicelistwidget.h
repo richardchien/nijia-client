@@ -8,6 +8,4 @@ public:
     explicit DeviceListWidget(QWidget *parent = nullptr);
 
 signals:
-
-public slots:
 };

@@ -97,7 +97,7 @@
         navItem.onclick = () => {
           Array.prototype.forEach.call(navItems, item => item.classList.remove('active'))
           navItem.classList.add('active')
-          thisWidget.onNavItemClicked(index)
+          thisWidget.emitNavItemClicked(index)
         }
       }
     )
