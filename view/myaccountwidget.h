@@ -1,14 +1,13 @@
 #pragma once
 
-#include <QWidget>
+#include "webviewwidget.h"
 
-class MyAccountWidget : public QWidget
-{
+class MyAccountWidget : public WebViewWidget {
     Q_OBJECT
 public:
     explicit MyAccountWidget(QWidget *parent = nullptr);
 
 signals:
 
+public slots:
 };
-

@@ -1,14 +1,13 @@
 #pragma once
 
-#include <QWidget>
+#include "webviewwidget.h"
 
-class DeviceListWidget : public QWidget
-{
+class DeviceListWidget : public WebViewWidget {
     Q_OBJECT
 public:
     explicit DeviceListWidget(QWidget *parent = nullptr);
 
 signals:
 
+public slots:
 };
-

@@ -8,10 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/data-mon-list.css">
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script src="./js/vue.js"></script>
 </head>
 
-<body>
-  <div class="container scrollbar" id="app">
+<body class="scrollbar">
+  <div class="container" id="app">
     <main class="main card-list data-mon-list" id="data-mon-list">
       <div class="card data-mon" v-for="{ name, source, value } in dataMonList">
         <div>
@@ -25,10 +27,7 @@
     </main>
   </div>
 
-  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
   <script src="./js/base.js"></script>
-  <script src="./js/vue.js"></script>
-
   <script>
     let app = new Vue({
       el: '#app',

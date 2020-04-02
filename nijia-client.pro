@@ -1,4 +1,4 @@
-QT       += core gui webenginewidgets webchannel
+QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,15 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    mainwindow.cpp \
-    sidebarbridge.cpp
+    main.cpp
 
-HEADERS += \
-    mainwindow.h \
-    sidebarbridge.h
+HEADERS +=
 
 FORMS +=
+
+include(view/view.pri)
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -36,3 +34,8 @@ RESOURCES += \
 
 QTQUICK_COMPILER_SKIPPED_RESOURCES += \
     res.qrc
+
+win32-msvc*: {
+    # 使 MSVC 能够正确编译 UTF-8 文件中的非 ASCII 字符
+    QMAKE_CXXFLAGS += /utf-8
+}

@@ -1,14 +1,18 @@
 #pragma once
 
-#include <QWidget>
+#include <QWebChannel>
+#include <QWebEngineView>
 
-class WebViewWidget : public QWidget
-{
+class WebViewWidget : public QWebEngineView {
     Q_OBJECT
 public:
     explicit WebViewWidget(QWidget *parent = nullptr);
+    explicit WebViewWidget(QUrl url, QWidget *parent = nullptr);
+    virtual ~WebViewWidget();
 
-signals:
+protected:
+    QWebChannel *channel;
+    bool isFirstShown = true;
 
+    void showEvent(QShowEvent *event) override;
 };
-
