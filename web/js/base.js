@@ -6,8 +6,12 @@ document.addEventListener('contextmenu', e => {
     e.preventDefault()
 })
 
-new QWebChannel(qt.webChannelTransport,
-    channel => {
-        window.thisWidget = channel.objects.thisWidget
-    }
-)
+function createWebChannel(callback) {
+    new QWebChannel(qt.webChannelTransport,
+        channel => {
+            window.thisWidget = channel.objects.thisWidget
+            window.globalData = channel.objects.globalData
+            callback(channel)
+        }
+    )
+}

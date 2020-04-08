@@ -3,6 +3,8 @@
 #include <QBoxLayout>
 #include <QWebChannel>
 
+#include "application.h"
+
 WebViewWidget::WebViewWidget(QWidget *parent) : QWebEngineView(parent) {
     setStyleSheet("border: none; background-color: transparent;");
     setAttribute(Qt::WA_TranslucentBackground);
@@ -10,6 +12,7 @@ WebViewWidget::WebViewWidget(QWidget *parent) : QWebEngineView(parent) {
 
     channel = new QWebChannel;
     channel->registerObject("thisWidget", this);
+    channel->registerObject("globalData", &Application::instance()->globalData);
     page()->setWebChannel(channel);
 }
 

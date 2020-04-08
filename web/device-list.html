@@ -19,7 +19,7 @@
         @click="onDeviceClicked(device)">
         <div class="device-image-switch">
           <img class="device-image" :src="`./images/devices/${device.model}.jpg`">
-          <div class="switch" v-if="device.switchable" :class="{ 'switched-on': device.switchedOn }"
+          <div class="switch" v-if="device.switchable" :class="{ 'switched-on': device.state.on }"
             @click.stop="onDeviceSwitchClicked(device)">
             <svg class="switch-icon" t="1585635298120" class="icon" viewBox="0 0 1024 1024" version="1.1"
               xmlns="http://www.w3.org/2000/svg" p-id="564">
@@ -46,22 +46,23 @@
     let app = new Vue({
       el: '#app',
       data: {
-        deviceList: [
-          { name: '吸顶灯', model: '10000', switchable: true, switchedOn: false },
-          { name: '温湿度计', model: '10001', switchable: false },
-          { name: '智能音箱', model: '10002', switchable: false },
-          { name: '烟雾报警器', model: '10003', switchable: false },
-          { name: '床头灯', model: '10004', switchable: true, switchedOn: false },
-        ]
+        deviceList: []
       },
       methods: {
         onDeviceClicked: device => {
           console.log(device)
         },
         onDeviceSwitchClicked: device => {
-          device.switchedOn = !device.switchedOn
+          device.state.on = !device.state.on
         }
       }
+    })
+
+    createWebChannel(channel => {
+      app.$data.deviceList = globalData.deviceList
+      globalData.deviceListChanged.connect(() => {
+        app.$data.deviceList = globalData.deviceList
+      })
     })
   </script>
 </body>
