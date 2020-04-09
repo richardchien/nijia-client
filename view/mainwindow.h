@@ -16,6 +16,9 @@ private:
     void initView();
     void initLogic();
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private:
     SidebarWidget *sidebarWidget;
     QStackedWidget *mainContainer;

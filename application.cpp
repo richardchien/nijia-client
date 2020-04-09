@@ -1,15 +1,19 @@
 #include "application.h"
 
+#include <QIcon>
+
 Application *Application::s_instance = nullptr;
 
 Application::Application(int &argc, char **argv) : QApplication(argc, argv) {
-    connect(&timer, &QTimer::timeout, this, &Application::updateDeviceList);
+    setWindowIcon(QIcon(":/web/images/logo.png"));
+
+    connect(&m_timer, &QTimer::timeout, this, &Application::updateDeviceList);
     connect(&rpcClient, &RpcWebSocketClient::connected, this, [this] {
         updateDeviceList();
-        timer.setInterval(3000);
-        timer.start();
+        m_timer.setInterval(3000);
+        m_timer.start();
     });
-    connect(&rpcClient, &RpcWebSocketClient::disconnected, this, [this] { timer.stop(); });
+    connect(&rpcClient, &RpcWebSocketClient::disconnected, this, [this] { m_timer.stop(); });
     rpcClient.open(QUrl("ws://127.0.0.1:6001/ws/client"));
 }
 

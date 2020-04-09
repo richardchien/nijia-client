@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 
+#include <QApplication>
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QWebChannel>
@@ -11,7 +12,6 @@
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     setWindowTitle("NIJIA 智能家居");
-    setWindowIcon(QIcon(":/web/images/logo.png"));
     setStyleSheet("background-color: #F5F6F8");
     setFixedSize(900, 580);
 
@@ -51,4 +51,8 @@ void MainWindow::initLogic() {
         wv->page()->runJavaScript("window.scrollTo(0, 0)");
         mainContainer->setCurrentIndex(index);
     });
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    QApplication::quit();
 }

@@ -6,21 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/device-list.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/device.css">
   <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
-  <script src="./js/vue.js"></script>
+  <script src="../js/vue.js"></script>
 </head>
 
 <body class="scrollbar">
   <div class="container" id="app">
-    <main class="main card-grid device-list" id="data-monitor">
-      <div class="card device" v-for="device in deviceList" :class="{ switchable: device.switchable }"
-        @click="onDeviceClicked(device)">
-        <div class="device-image-switch">
-          <img class="device-image" :src="`./images/devices/${device.model}.jpg`">
-          <div class="switch" v-if="device.switchable" :class="{ 'switched-on': device.state.on }"
-            @click.stop="onDeviceSwitchClicked(device)">
+    <main class="main card-list state-list" id="data-monitor">
+      <div class="device-name">
+        {{ device.name }}
+      </div>
+      <div class="card state-line">
+        <div class="state-title">开关</div>
+        <div class="state-value">
+          <div class="switch" :class="{ 'switched-on': device.state.on }" @click.stop="onSwitchClicked">
             <svg class="switch-icon" t="1585635298120" class="icon" viewBox="0 0 1024 1024" version="1.1"
               xmlns="http://www.w3.org/2000/svg" p-id="564">
               <path d="M276.2 164.2m-40.9 0a40.9 40.9 0 1 0 81.8 0 40.9 40.9 0 1 0-81.8 0Z" p-id="565">
@@ -36,35 +37,27 @@
             </svg>
           </div>
         </div>
-        <div class="device-name">{{ device.name }}</div>
       </div>
     </main>
   </div>
 
-  <script src="./js/base.js"></script>
+  <script src="../js/base.js"></script>
+  <script src="../js/device.js"></script>
   <script>
     let app = new Vue({
       el: '#app',
       data: {
-        deviceList: []
+        device: window.device
       },
       methods: {
-        onDeviceClicked(device) {
-          console.log(`device (uid = ${device.uid}) clicked`)
-          thisWidget.onDeviceClicked(device.uid)
-        },
-        onDeviceSwitchClicked(device) {
-          device.state.on = !device.state.on
-          // TODO: update device state
+        onSwitchClicked() {
+          console.log('switch clicked')
         }
       }
     })
 
     createWebChannel(channel => {
-      app.$data.deviceList = globalData.deviceList
-      globalData.deviceListChanged.connect(() => {
-        app.$data.deviceList = globalData.deviceList
-      })
+      setupDevice()
     })
   </script>
 </body>

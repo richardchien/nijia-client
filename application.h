@@ -26,7 +26,7 @@ public:
 private:
     static Application *s_instance;
 
-    QTimer timer;
+    QTimer m_timer;
 
     void updateDeviceList();
 };

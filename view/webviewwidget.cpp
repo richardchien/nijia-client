@@ -6,8 +6,7 @@
 #include "application.h"
 
 WebViewWidget::WebViewWidget(QWidget *parent) : QWebEngineView(parent) {
-    setStyleSheet("border: none; background-color: transparent;");
-    setAttribute(Qt::WA_TranslucentBackground);
+    setStyleSheet("background-color: #F5F6F8");
     page()->setBackgroundColor(Qt::transparent);
 
     channel = new QWebChannel;

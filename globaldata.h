@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QDebug>
 #include <QObject>
 #include <QVariantList>
 
@@ -18,6 +19,15 @@ public:
     void setDeviceList(QVariantList val) {
         m_deviceList = qMove(val);
         emit deviceListChanged();
+    }
+
+    Q_INVOKABLE QVariantMap device(QString uid) const {
+        for (const auto &dev : m_deviceList) {
+            if (dev.toMap()["uid"].toString() == uid) {
+                return dev.toMap();
+            }
+        }
+        return QVariantMap();
     }
 
 signals:

@@ -24,5 +24,12 @@
         <file>web/images/devices/generic-meter.png</file>
         <file>web/images/devices/generic-radio.png</file>
         <file>web/js/vue.js</file>
+        <file>web/css/device.css</file>
+        <file>web/devices/10000.html</file>
+        <file>web/js/device.js</file>
+        <file>web/devices/10001.html</file>
+        <file>web/devices/10004.html</file>
+        <file>web/devices/10003.html</file>
+        <file>web/js/chart.min.js</file>
     </qresource>
 </RCC>

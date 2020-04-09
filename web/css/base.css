@@ -88,8 +88,8 @@ img {
 }
 
 .switch {
-    width: 2.4em;
-    height: 2.4em;
+    width: 2.4rem;
+    height: 2.4rem;
     border: 1px solid rgba(215, 215, 215, 0.9);
     border-radius: 999px;
     display: flex;

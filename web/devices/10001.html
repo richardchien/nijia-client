@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/device.css">
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script src="../js/vue.js"></script>
+  <script src="../js/chart.min.js"></script>
+
+  <style>
+    .chart-container {
+      width: 70%;
+      height: 100%;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body class="scrollbar">
+  <div class="container" id="app">
+    <main class="main card-list state-list" id="data-monitor">
+      <div class="device-name">
+        {{ device.name }}
+      </div>
+      <div class="card state-line" @click="showHistory = !showHistory">
+        <div class="state-title">温度</div>
+        <div class="state-value" v-if="!showHistory">{{ device.state.temperature }} °C</div>
+        <div class="state-value chart-container" :style="{ display: showHistory ? 'inherit' : 'none' }">
+          <canvas id="tempChart" class="chart"></canvas>
+        </div>
+      </div>
+      <div class="card state-line" @click="showHistory = !showHistory">
+        <div class="state-title">湿度</div>
+        <div class="state-value" v-if="!showHistory">{{ device.state.humidity }}%</div>
+        <div class="state-value chart-container" :style="{ display: showHistory ? 'inherit' : 'none' }">
+          <canvas id="humChart" class="chart"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/base.js"></script>
+  <script src="../js/device.js"></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        device: window.device,
+        showHistory: false,
+        historyStateList: [],
+        tempChart: null,
+        humChart: null,
+      },
+      computed: {
+        historyData() {
+          const maxLength = 20
+          const keys = ['temperature', 'humidity']
+          let data = {}
+          keys.forEach(key => {
+            let values = this.historyStateList.map(x => x.state[key])
+            if (values.length > maxLength) {
+              values = values.slice(values.length - maxLength)
+            } else {
+              values = new Array(maxLength - values.length).concat(values)
+            }
+            data[key] = values
+          })
+          return data
+        }
+      },
+      watch: {
+        historyData() {
+          this.updateCharts()
+        }
+      },
+      methods: {
+        renderChart(elemId, data) {
+          const options = {
+            animation: false,
+            maintainAspectRatio: false,
+            legend: { display: false },
+            scales: {
+              xAxes: [{ display: false }],
+              yAxes: [{ display: false }]
+            },
+            tooltips: { enabled: false },
+            elements: {
+              point: { radius: 0, hoverRadius: 0 }
+            },
+          }
+
+          let ctx = document.getElementById(elemId).getContext('2d');
+          return new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: new Array(data.length),
+              datasets: [{
+                backgroundColor: '#79cfd2',
+                borderColor: '#79cfd2',
+                data: data,
+              }]
+            },
+            options: options
+          })
+        },
+        renderCharts() {
+          this.tempChart = this.renderChart('tempChart', this.historyData.temperature)
+          this.humChart = this.renderChart('humChart', this.historyData.humidity)
+        },
+        updateCharts() {
+          this.tempChart.data.datasets[0].data = this.historyData.temperature
+          this.tempChart.data.labels = new Array(this.historyData.temperature.length)
+          this.tempChart.update()
+          this.humChart.data.datasets[0].data = this.historyData.humidity
+          this.humChart.data.labels = new Array(this.historyData.humidity.length)
+          this.humChart.update()
+        }
+      },
+      mounted() {
+        this.renderCharts()
+      }
+    })
+
+    createWebChannel(channel => {
+      setupDevice()
+
+      thisWidget.historyStateListChanged.connect(() => {
+        app.$data.historyStateList = thisWidget.historyStateList
+      })
+      thisWidget.startTimer()
+    })
+  </script>
+</body>
+
+</html>
