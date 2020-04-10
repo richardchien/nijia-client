@@ -54,8 +54,8 @@
           thisWidget.onDeviceClicked(device.uid)
         },
         onDeviceSwitchClicked(device) {
-          device.state.on = !device.state.on
-          // TODO: update device state
+          console.log(`device (uid = ${device.uid}) switch clicked`)
+          thisWidget.onDeviceSwitchClicked(device.uid, device.state.on)
         }
       }
     })

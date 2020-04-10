@@ -51,8 +51,9 @@
       },
       methods: {
         onSwitchClicked() {
-          console.log('switch clicked')
-        }
+          console.log(`switch clicked`)
+          thisWidget.changeState({ on: !this.device.state.on })
+        },
       }
     })
 

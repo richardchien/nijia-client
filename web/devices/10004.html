@@ -69,8 +69,8 @@
       <div class="card state-line">
         <div class="state-title">颜色</div>
         <div class="state-value">
-          <div class="color-circle" v-for="color in ['red', 'yellow', 'blue']" :class="[color, { active: device.state.color == color }]"
-            @click.stop="onColorClicked(color)"></div>
+          <div class="color-circle" v-for="color in ['red', 'yellow', 'blue']"
+            :class="[color, { active: device.state.color == color }]" @click.stop="onColorClicked(color)"></div>
         </div>
       </div>
     </main>
@@ -86,10 +86,12 @@
       },
       methods: {
         onSwitchClicked() {
-          console.log('switch clicked')
+          console.log(`switch clicked`)
+          thisWidget.changeState({ on: !this.device.state.on })
         },
         onColorClicked(color) {
           console.log(`${color} clicked`)
+          thisWidget.changeState({ color })
         }
       }
     })

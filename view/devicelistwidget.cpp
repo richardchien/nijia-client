@@ -22,5 +22,10 @@ void DeviceListWidget::onDeviceClicked(QString uid) {
     widget->activateWindow();
 }
 
-void DeviceListWidget::onDeviceSwitchClicked(QString uid) {
+void DeviceListWidget::onDeviceSwitchClicked(QString uid, bool currOn) {
+    Application::instance()->rpcClient.invoke(
+        {"update_device_state", {{"uid", uid}, {"state", QVariantMap({{"on", !currOn}})}}}, [uid](auto response) {
+            if (!response.error.isNull()) return;
+            Application::instance()->globalData.setDevice(uid, response.result.toMap());
+        });
 }

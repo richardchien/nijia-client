@@ -33,6 +33,14 @@ void DeviceWidget::startTimer() {
     m_timer.start();
 }
 
+void DeviceWidget::changeState(QVariantMap state) {
+    Application::instance()->rpcClient.invoke(
+        {"update_device_state", {{"uid", m_uid}, {"state", state}}}, [uid = m_uid](auto response) {
+            if (!response.error.isNull()) return;
+            Application::instance()->globalData.setDevice(uid, response.result.toMap());
+        });
+}
+
 void DeviceWidget::closeEvent(QCloseEvent *event) {
     m_timer.stop();
     emit aboutToClose();

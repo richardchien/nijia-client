@@ -10,7 +10,7 @@ public:
 
 public: // intended to be used via QWebChannel
     Q_INVOKABLE void onDeviceClicked(QString uid);
-    Q_INVOKABLE void onDeviceSwitchClicked(QString uid);
+    Q_INVOKABLE void onDeviceSwitchClicked(QString uid, bool currOn);
 
 signals:
 

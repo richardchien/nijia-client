@@ -30,6 +30,16 @@ public:
         return QVariantMap();
     }
 
+    void setDevice(QString uid, QVariantMap val) {
+        for (auto &dev : m_deviceList) {
+            if (dev.toMap()["uid"] == uid) {
+                dev = qMove(val);
+                emit deviceListChanged();
+                break;
+            }
+        }
+    }
+
 signals:
     void deviceListChanged();
 

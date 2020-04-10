@@ -17,6 +17,7 @@ public slots:
 
 public: // intended to be used via QWebChannel
     Q_INVOKABLE void startTimer();
+    Q_INVOKABLE void changeState(QVariantMap state);
 
 signals:
     void aboutToClose();
